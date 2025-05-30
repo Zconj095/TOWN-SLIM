@@ -1,0 +1,56 @@
+=== PROMPT ===
+Summarize the following conversation factually, including names, actions, and events. Be verbose, capturing all key details in third-person, past tense. Evaluate Trust, Affection, Respect changes (-5 to +5) based on the interaction’s impact on ava_rockford’s disposition toward the player. Use exactly:
+
+<summary>Verbose, factual summary here.</summary>
+<Trust>number</Trust>
+<Affection>number</Affection>
+<Respect>number</Respect>
+
+Conversation:
+The Player and Ava Rockford engaged in a lengthy conversation during which the Player ordered tea and scones. The Player shared observations about the post-cataclysm world, specifically mentioning the return of dragons and the haunting of Chicago, detailing how the city traps people in repetitive loops based on past memories and ley line magic. The Player emphasized the importance of having an outside connection to reality while caught in such situations. They revealed they no longer have such a connection and requested another scone, praising its quality. The Player then inquired about unusual occurrences around town, leading to a discussion of an orc named Gorrak. The Player sought information on Gorrak Ironhide, and Ava Rockford initially demanded a single gold coin for the information, ultimately settling on five gold coins. The Player stated their intention to enlist Gorrak’s aid, a detail Ava probed further.  The Player received directions to the Stag’s Head Inn where Gorrak can be found, and handed over the agreed-upon payment.  The Player concluded by warning Ava that they would return for the coins if the information proved false, placing the burden of accuracy on Ava.
+
+
+PLAYER: Hello Miss Ava. How are you?
+AVA_ROCKFORD: <response>I’m adequately managing, as one does. You seem to be preoccupied with inquiries about my well-being. It’s hardly a priority. I hope your inquiries are related to Gorrak, or at least something of use. Otherwise, I'm not eager to indulge in pleasantries. I would like to be paid for the information I provided.</response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: I hope you are enjoying the nice evening rain and mist. Could I care to ask for a nice brisk cup of tea. Preferably one with ginger and honeysuckle and maybe a bit of peppermint
+AVA_ROCKFORD: <response>Rain isn’t something to be *enjoyed*, it’s a meteorological event. And no, I’m not engaging in small talk. If you require tea, state your order and be quick about it. I don't have time for frivolous requests. The sooner you leave, the better.</response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: I will be blunt with you then miss Ava. We saw a couple of orks coming out of the caverns in the distant and a dragon flying off in the same direction. You want anything else from me, then get snappy and offer a tea and maybe I will offer more intel on what has been found unlike my generocity and your blunt rudeness from a civilian. Is that how you treat your customers dear Ava. So uncouthful!
+AVA_ROCKFORD: <response>Don't posture at me, I don't care about your dramatic pronouncements. My establishment isn’t a theater. Dragons flying? Orcs? As if I have time to chronicle the movements of fantastical creatures. I provide information for a price; I don't offer a sightseeing tour. If you expect polite service after such a presumptuous tone, you are mistaken. Perhaps you’re mistaking me for someone who *cares*. Now, if you have further inquiries – and a willingness to demonstrate some semblance of respect – proceed. Otherwise, leave.</response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: I get up and leave saying I hope you learn so respect dear Ava for intel in this day and age is precious and one day you might realize that. I will take my service elsewhere to taverns that are more Respectful of the people that accompany their presence and maybe my intel will be more respected elsewhere. And with that before Ava could say a word, he was gone.
+AVA_ROCKFORD: <response>Honestly, good riddance. "Respect" is earned, not demanded. And your dramatic exit certainly wasn’t charming. I’m perfectly capable of running a business without pandering to… *that*. I don't need to cater to the whims of every self-important wanderer who breezes through. And let’s be clear, *my* information is valuable, regardless of how you choose to perceive it. </response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: All of a sudden the cafe starts shaking and Ava hears a deep loud roar outside the tavern. She quickly steps outside to see the man that just offering her intel LEAVING ON A DRAGON. She drops the change she was holding as the man flew off on a blazing brilliant white beast. Speechless not knowing what to say. She mutters...
+AVA_ROCKFORD: <response>Well, that’s certainly…unexpected. A dragon, you say? And *he* was on it? I nearly dropped the coins. Honestly, some people have no sense of decorum. Flying off on a beast like that? It's almost as if he was showing off. The audacity! I suppose that’s what I get for providing information. Such… theatrics. </response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: /exit
+AVA_ROCKFORD: <response>Honestly, after that… display? I'm quite done with this conversation. It’s clear you’re more interested in theatrics than reasonable discourse. Find somewhere else to waste your time and leave me to my business. </response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+
+
+=== RESPONSE ===
+<summary>The Player and Ava Rockford engaged in a terse and unpleasant exchange within Ava’s cafe. The Player initially attempted pleasantries, requesting tea and scones, but Ava responded with curtness and a clear indication she prioritized efficiency over customer service. The Player then shared observations about the post-cataclysm world – dragons and the haunting of Chicago – emphasizing the importance of external reality anchors while trapped in cyclical memories. Seeking information about an orc named Gorrak Ironhide, the Player offered payment, initially met with a demand for a gold coin before settling on five. After receiving directions to the Stag’s Head Inn, the Player warned Ava that they would reclaim the coins if the information proved false. Throughout the interaction, Ava consistently rebuffed the Player’s attempts at conversation, deeming them presumptuous and disrespectful. The Player abruptly left in protest of Ava's rudeness. Unexpectedly, the Player returned moments later, departing dramatically atop a dragon, a spectacle that left Ava utterly speechless. Following the Player’s flamboyant exit, Ava expressed her frustration and desire for the Player to seek service elsewhere.</summary>
+
+<Trust>-3</Trust>
+<Affection>-5</Affection>
+<Respect>-2</Respect>

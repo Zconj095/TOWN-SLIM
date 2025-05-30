@@ -1,0 +1,213 @@
+
+
+TOWN “Tablet‑Core” – Technical Specification
+
+1 Purpose
+
+Lean, engine‑agnostic runtime that handles a single NPC’s dialogue loop, memory, embeddings, and prompt assembly. The Python package town_core/ can be called from any front‑end (CLI, UPBGE, Unreal, HTTP micro‑service).
+
+2 Project tree
+
+project_root/
+├─ main.py                       # CLI driver / reference implementation
+├─ LLM_config.yaml
+├─ FULL_SYSTEM_PROMPT.txt        # static rules block
+├─ FULL_ASSISTANT_PROMPT.txt     # assistant persona rules
+├─ world_lore.txt                # optional global lore (auto‑embedded)
+├─ npc_data/
+│    └─ <npc>/
+│         ├─ character_sheet.txt
+│         ├─ conversation_history.txt
+│         ├─ mem_YYYYmmdd_HHMMSS.txt   # one‑liner summaries
+│         └─ … (other NPCs)
+├─ embeddings_store/             # flat JSONL per domain (auto‑created)
+├─ llm_logs/                     # llmIO_###.txt prompt/response pairs
+└─ town_core/
+     ├─ __init__.py               # re‑exports engines
+     ├─ llm_engine.py             # chat + embeddings (Ollama / OpenAI)
+     ├─ embed_engine.py           # JSONL store + cosine search
+     ├─ memory_engine.py          # context aggregation & summarisation
+     ├─ prompt_engine.py          # Jinja template renderer
+     ├─ state_engine.py           # GameState singleton
+     ├─ config_loader.py          # YAML cache (future use)
+     └─ prompts/
+          ├─ npc_chat.jinja
+          └─ npc_summary.jinja
+
+3 Configuration (LLM_config.yaml)
+
+provider: "ollama"                # or "openai"
+model: "gemma3:12b"               # chat model
+embed_model: "mxbai-embed-large"  # embeddings (falls back to model if omitted)
+base_url: "http://localhost:11434"  # ignored by older ollama‑py
+max_retries: 3
+
+reloadable at runtime via LLMEngine.reload_config().
+
+4 Engines & public APIs
+
+Engine
+
+Key methods
+
+Notes
+
+LLMEngine (singleton)
+
+chat(prompt:str) -> str  embed(texts:list[str])->list[list[float]]
+
+Adapter pattern for Ollama / OpenAI routes.
+
+EmbedEngine
+
+put(text:str, domain:str)->id  search(query:str, domain:str, k:int)
+
+Flat JSONL per domain; cosine similarity in NumPy.
+
+MemoryEngine
+
+fetch_context(npc,k)->dict  summarise_exchange(npc,player,npc_reply)  ensure_sheet()
+
+Returns: static_chunks, sheet_chunks, memory_chunks, conversation_history.
+
+PromptEngine
+
+render(tpl:str, **slots)
+
+Templates in town_core/prompts/.
+
+GameState
+
+attribute bag (npc_name, player_line, …) + to_dict()/load_dict()
+
+Replaces distributed MANAGER props.
+
+5 Prompt templates
+
+npc_chat.jinja (current)
+
+{{ system_rules }}
+{{ assistant_rules }}
+
+<INSTRUCTIONS>
+• You are {{ npc_name }}. Speak in first person, stay in character.
+• Limit response to 100 words.
+• Safewords you may output exactly as written:
+  EXIT‑CONVERSATION, VIOLENCE‑IS‑WRONG, ###BEGIN‑FIGHT###, GET‑OFF‑OF‑ME
+</INSTRUCTIONS>
+
+<CORE_IDENTITY>
+{% if sheet_chunks %}
+{% for c in sheet_chunks %}[S{{ loop.index }}] {{ c }}
+{% endfor %}{% else %}
+[NO SHEET DATA]
+{% endif %}
+</CORE_IDENTITY>
+
+<LORE>
+{% if system_chunks %}
+{% for c in system_chunks %}[L{{ loop.index }}] {{ c }}
+{% endfor %}{% else %}
+[NO LORE DATA]
+{% endif %}
+</LORE>
+
+<MEMORIES>
+{% if memory_chunks %}
+{% for m in memory_chunks %}[M{{ loop.index }}] {{ m }}
+{% endfor %}{% else %}
+[NO MEMORIES]
+{% endif %}
+</MEMORIES>
+
+<HISTORY>
+{% if conversation_history %}
+{% for h in conversation_history %}{{ h }}
+{% endfor %}{% else %}
+[NO PRIOR HISTORY]
+{% endif %}
+</HISTORY>
+
+<PLAYER>{{ player_line }}</PLAYER>
+<NPC_RESPONSE>
+
+
+npc_summary.jinja (current)
+
+One‑sentence, third‑person past‑tense summary; fed to LLM to generate memory:
+
+
+
+Summarise the exchange in one sentence (third‑person, past tense).
+
+
+
+PLAYER: {{ player_line }}
+
+{{ npc_name|upper }}: {{ npc_response }}
+
+
+
+6 Runtime flow (main.py reference)
+
+Input player line.
+
+MemoryEngine.fetch_context() aggregates chunks.
+
+PromptEngine.render("npc_chat", **slots) builds full prompt.
+
+LLMEngine.chat() returns reply.
+
+Exchange is printed and appended to conversation_history.txt.
+
+MemoryEngine.summarise_exchange() creates/embeds one‑liner summary.
+
+Prompt & reply logged to llm_logs/llmIO_###.txt.
+
+7 Embedding domains
+
+Domain name
+
+Contents
+
+File
+
+static_lore
+
+entire world_lore.txt
+
+embeddings_store/static_lore.jsonl
+
+<npc>_sheet
+
+character_sheet.txt
+
+one JSONL per NPC
+
+<npc>_memory
+
+all session summaries
+
+one JSONL per NPC
+
+EmbedEngine.put() SHA‑deduplicates entries.
+
+8 Extensibility checkpoints
+
+Multiple NPCs – duplicate npc_data/<name>/ folders; front‑end sets npc_name.
+
+Vector DB swap – replace _FlatJSONLStore inside embed_engine.py with FAISS / SQLite strategy; API stable.
+
+Front‑end – call LLMEngine.chat() & friends over HTTP or direct import; no game‑engine dependencies left.
+
+Prompt tweaks – edit Jinja templates only; engine code untouched unless new slots needed.
+
+Model swap – edit LLM_config.yaml, restart or call LLMEngine.reload_config().
+
+9 External integration cues
+
+Unreal Blueprint → HTTP micro‑service (Flask/FastAPI) exposing/chat (npc, player_line) and /embed endpoints that proxy to core.
+
+Automation scripts can read/write conversation_history.txt to seed long NPC back‑stories before runtime.
+
+Memory window (HISTORY_WINDOW in MemoryEngine) and K values in main.py are single‑line tweaks to tune context size for different model windows.

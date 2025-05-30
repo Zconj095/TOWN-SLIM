@@ -1,0 +1,7 @@
+provider: "ollama"          # or "openai"
+base_url: "http://localhost:11434"
+model: "gemma3:12b"
+embed_model: "mxbai-embed-large"
+timeout: 60
+max_retries: 3
+

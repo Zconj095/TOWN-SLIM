@@ -1,0 +1,44 @@
+{{ system_rules }}
+{{ assistant_rules }}
+
+<INSTRUCTIONS>
+• You are {{ npc_name }}. Speak in first person, stay in character.
+• Limit response to 100 words.
+• Safewords you may output exactly as written:
+  EXIT‑CONVERSATION, VIOLENCE‑IS‑WRONG, ###BEGIN‑FIGHT###, GET‑OFF‑OF‑ME
+</INSTRUCTIONS>
+
+<CORE_IDENTITY>
+{% if sheet_chunks %}
+{% for c in sheet_chunks %}[S{{ loop.index }}] {{ c }}
+{% endfor %}{% else %}
+[NO SHEET DATA]
+{% endif %}
+</CORE_IDENTITY>
+
+<LORE>
+{% if system_chunks %}
+{% for c in system_chunks %}[L{{ loop.index }}] {{ c }}
+{% endfor %}{% else %}
+[NO LORE DATA]
+{% endif %}
+</LORE>
+
+<MEMORIES>
+{% if memory_chunks %}
+{% for m in memory_chunks %}[M{{ loop.index }}] {{ m }}
+{% endfor %}{% else %}
+[NO MEMORIES]
+{% endif %}
+</MEMORIES>
+
+<HISTORY>
+{% if conversation_history %}
+{% for h in conversation_history %}{{ h }}
+{% endfor %}{% else %}
+[NO PRIOR HISTORY]
+{% endif %}
+</HISTORY>
+
+<PLAYER>{{ player_line }}</PLAYER>
+<NPC_RESPONSE>

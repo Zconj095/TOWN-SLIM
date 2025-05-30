@@ -1,0 +1,4 @@
+Summarise the exchange in one sentence (third‑person, past tense).
+
+PLAYER: {{ player_line }}
+{{ npc_name|upper }}: {{ npc_response }}

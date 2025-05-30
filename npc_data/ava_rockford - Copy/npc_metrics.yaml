@@ -1,0 +1,16 @@
+trust:
+  base_gain: 0.1
+  base_loss: -0.3
+  affection_mod: 0.5  # Affection moderately boosts trust
+  max: 0.8  # Skeptical, never fully trusts
+  min: 0.1
+affection:
+  base_gain: 0.2
+  base_loss: -0.2
+  max: 0.9  # Can like, but not deeply
+  min: 0.0
+respect:
+  base_gain: 0.15
+  base_loss: -0.25
+  max: 0.85
+  min: 0.0
