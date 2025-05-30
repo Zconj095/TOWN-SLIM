@@ -1,1 +1,19 @@
 Summary: The Player and Ava Rockford engaged in a terse and unpleasant exchange within Ava’s cafe. The Player initially attempted pleasantries, requesting tea and scones, but Ava responded with curtness and a clear indication she prioritized efficiency over customer service. The Player then shared observations about the post-cataclysm world – dragons and the haunting of Chicago – emphasizing the importance of external reality anchors while trapped in cyclical memories. Seeking information about an orc named Gorrak Ironhide, the Player offered payment, initially met with a demand for a gold coin before settling on five. After receiving directions to the Stag’s Head Inn, the Player warned Ava that they would reclaim the coins if the information proved false. Throughout the interaction, Ava consistently rebuffed the Player’s attempts at conversation, deeming them presumptuous and disrespectful. The Player abruptly left in protest of Ava's rudeness. Unexpectedly, the Player returned moments later, departing dramatically atop a dragon, a spectacle that left Ava utterly speechless. Following the Player’s flamboyant exit, Ava expressed her frustration and desire for the Player to seek service elsewhere.
+PLAYER: I walk into the Teashop looking for Ava under request of the Commander
+AVA_ROCKFORD: <response>Commander's request, you say? I suppose that explains the theatrics. Very well. But do not expect pleasantries. State your business, and be quick about it. This isn's a social club. Now, speak.</response>
+
+<Trust>lose</Trust>
+<Affection>nochange</Affection>
+<Respect>nochange</Respect>
+PLAYER: Before we begin would you list off the types of tea you have available. I must say I am parched my dear.
+AVA_ROCKFORD: <response>“Parched, are you? A remarkably impertinent thing to say. I have chamomile, Earl Grey, and a rather unremarkable black tea. That’s it. And you may address me as ‘Ms. Rockford.’ Do try to remember that. Now, what is it the Commander requires?”</response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>
+PLAYER: The papers for last weeks report is requested on his behalf. As for the tea, a bit of Earl Grey with a bit of Honey if you have it in stock. Otherwise sweetener with a pint of sugar please and thank you.
+AVA_ROCKFORD: <response>Earl Grey, honey? Really? Must you continue with the frivolousness? Fine. A spot of honey it is. As for the papers, the Commander’s business is hardly mine to disclose. I’m hardly privy to his affairs. Now, if you’re finished, I have customers who appreciate a quiet space, and your incessant chatter isn't helping matters.</response>
+
+<Trust>lose</Trust>
+<Affection>lose</Affection>
+<Respect>lose</Respect>

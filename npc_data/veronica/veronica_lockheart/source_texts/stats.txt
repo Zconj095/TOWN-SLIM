@@ -1,0 +1,8 @@
+Openness: 8.0
+Conscientiousness: 7.0
+Extraversion: 3.0
+Agreeableness: 8.0
+Neuroticism: 6.0
+Trust: 0.2
+Affection: 0.2
+Respect: 0.2

@@ -1,0 +1,11 @@
+Veronica's Rumors:
+rumor: Veronica’s art has recently been inspired by strange visions of the future. ##TRUE##
+rumor: Veronica is secretly working on a masterpiece that will change the art world forever. ##FALSE##
+rumor: Veronica has a mysterious benefactor who funds her work in exchange for unknown favors. ##FALSE##
+rumor: Veronica’s red hair was magically enchanted to change color depending on her mood. ##FALSE##
+rumor: Veronica's art is laced with subtle, hidden symbols of rebellion against powerful forces. ##TRUE##
+rumor: Veronica’s latest pieces are inspired by forbidden magic, though she denies it. ##FALSE##
+rumor: Veronica is rumored to have briefly studied under a legendary, reclusive artist. ##TRUE##
+rumor: Veronica’s studio is enchanted so that no one can steal her work. ##FALSE##
+rumor: Veronica has been seen talking to herself while painting, claiming she’s speaking with spirits. ##FALSE##
+rumor: Veronica’s artwork can emotionally manipulate people, subtly shifting their moods. ##TRUE**

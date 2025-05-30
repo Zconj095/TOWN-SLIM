@@ -1,0 +1,5 @@
+Openness: 8
+Conscientiousness: 4
+Extraversion: 4
+Agreeableness: 8
+Neuroticism: 5

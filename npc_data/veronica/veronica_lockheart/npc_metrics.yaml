@@ -1,0 +1,22 @@
+affection:
+  base_gain: 1.0
+  base_loss: -0.0
+  current: 10.0
+  initial: 4
+  max: 9.0
+  min: -9.0
+respect:
+  base_gain: 0.8
+  base_loss: -0.1
+  current: 10.0
+  initial: 4
+  max: 8.0
+  min: -8.0
+trust:
+  affection_mod: 0.6
+  base_gain: 0.7
+  base_loss: -0.2
+  current: 10.0
+  initial: 1.5
+  max: 7.0
+  min: -8.0
